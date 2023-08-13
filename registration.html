@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    <link rel="stylesheet" href="registrtion.css" />
+    <script defer src="./index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" method="POST" name="google-sheet">
+      <h1 class="form-title">Registration Form</h1>
+      <form action="#">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label for="fullName">Full Name</label>
+            <input type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter Full Name"/>
+          </div>
+          <div class="user-input-box">
+            <label for="username">Username</label>
+            <input type="text" required
+                    id="username"
+                    name="username"
+                    placeholder="Enter Username"/>
+                    <div class="error"></div>
+          </div>
+          <div class="user-input-box">
+            <label for="email">Email</label>
+            <input type="email" required
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"/>
+                    <div class="error"></div>
+          </div>
+          <div class="user-input-box">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" required
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    placeholder="Enter Phone Number"/>
+                    <div class="error"></div>
+          </div>
+          <div class="user-input-box">
+            <label for="password">Password</label>
+            <input type="password" required
+                    id="password"
+                    name="password"
+                    placeholder="Enter Password"/>
+                    <div class="error"></div>
+          </div>
+          <div class="user-input-box">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" required
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm Password"/>
+                    <div class="error"></div>
+          </div>
+          <!--Entering new fields css pending-->
+          <div class="user-input-box">
+            <label for="PermanentAddress">Permanent Address</label>
+            <input type="text"
+                    id="PermanentAddress"
+                    name="PermanentAddress"
+                    placeholder="Enter your address"/>
+          </div>
+          <div class="user-input-box">
+            <label for="AadharNumber">Aadhar Number</label>
+            <input type="text" required
+                    id="Aadharnumber"
+                    name="Aadharnumber"
+                    placeholder="Enter Aadhar Number"/>
+                    <div class="error"></div>
+          </div>
+        </div>
+        <div class="gender-details-box">
+          <span class="gender-title">Gender</span>
+          <div class="gender-category">
+            <input type="radio" name="gender" id="male" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="Female">
+            <label for="female">Female</label>
+            <input type="radio" name="gender" id="other" value="Other">
+            <label for="other">Other</label>
+          </div>
+        </div>
+        <!--Dropdown list for blood group-->
+        <div class="Blood-group-box">
+            <span class="Blood-group-title">Blood-group</span>
+            <div class="blood-group-category">   
+          <label for="group">Choose your blood group:</label>
+          <select name="blood-group" id="blood-group">
+            <option value="Not Selected" selected>Select</option>
+            <option value="O+ve">O+ve</option>
+            <option value="O-ve">O-ve</option>
+            <option value="A+ve">A+ve</option>
+            <option value="A-ve">A-ve</option>
+            <option value="B+ve">B+ve</option>
+            <option value="B-ve">B-ve</option>
+            <option value="AB+ve">AB+ve</option>
+            <option value="AB-ve">AB-ve</option>
+          </select>
+            </div>
+        </div>
+        <!--Dropdown Closes-->
+        <div class="Registering-as-box">
+            <span class="Registering-as-title">Registering as:</span>
+            <div class="Registering-category">
+          <label for="Registering">You are :</label>
+          <select name="Registering-as" id="Registering-as" onchange="changeStatus()">
+            <option value="Not Selected" selected>Click Here</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Staff">Staff</option>
+            <option value="Patient">Patient</option>
+            <option value="Admin">Admin</option>
+          </select>
+           </div>
+        </div>
+        <!--Specialization section-->
+        <div class="Specialization" id="Specialization">
+          <div class="Specialization-category">
+          <label for="Specialization">Specialization :</label>
+          <select name="Specialization" id="Specialist">
+              <option value="Not Selected" selected></option>
+              <option value="Cardiology">Cardiology</option>
+              <option value="Neurology">Neurology</option>
+              <option value="Orthopaedic">Orthopaedic</option>
+              <option value="Gynecology">Gynecology</option>
+              <option value="Dermatology">Dermatology</option>
+              <option value="Pediatrics">Pediatrics</option>
+              <option value="Pulmonology">Pulmonology</option>
+              <option value="Radiology">Radiology</option>
+              <option value="Dentistry">Dentistry</option>
+              <option value="ENT(Ear,Nose,Throat)">ENT(Ear,Nose,Throat)</option>
+              <option value="Urology">Urology</option>
+          </select>
+          </div>
+        </div>
+        <script>
+          function changeStatus()
+          {
+              var status = document.getElementById("Registering-as");
+              if(status.value == "Doctor")
+              {
+                  document.getElementById("Specialization").style.visibility="visible";
+              }
+              else
+              {
+                  document.getElementById("Specialization").style.visibility="hidden";
+              }
+          }
+        </script>
+        <div class="form-submit-btn">
+          <input type="submit" value="Register" name="submit">
+        </div>
+      </form>
+    </div>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwQqMgS1oePiBkJG19PigWO0qEK9WHU4qpldHviMo8nNX2xbW__fRe2kJ48uc1Vr2O3KA/exec'
+      const form = document.forms['google-sheet']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => alert("Thanks for Registering with us..!"))
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+  </body>
+</html>
