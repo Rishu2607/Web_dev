@@ -22,6 +22,9 @@ form.addEventListener('submit', (event) => {
     } else if (passwordInput.value !== confirmPasswordInput.value) {
         event.preventDefault();
         alert('Passwords do not match.');
+    } else if (!validatePasswordComplexity(passwordInput.value)) {
+        event.preventDefault();
+        alert('Password should be at least 8 characters long and contain at least one uppercase letter and one digit.');
     } else {
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwQqMgS1oePiBkJG19PigWO0qEK9WHU4qpldHviMo8nNX2xbW__fRe2kJ48uc1Vr2O3KA/exec';
         const form = document.forms['google-sheet']
@@ -41,4 +44,11 @@ form.addEventListener('submit', (event) => {
 function validatePhoneNumber(phone) {
     const phonePattern = /^\d{10}$/;
     return phonePattern.test(phone);
+}
+
+function validatePasswordComplexity(password) {
+    // Check if the password is at least 8 characters long
+    // and contains at least one uppercase letter and one digit
+    const passwordPattern = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+    return passwordPattern.test(password);
 }
