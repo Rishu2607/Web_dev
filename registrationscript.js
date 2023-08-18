@@ -18,7 +18,7 @@ const confirmPasswordInput = document.getElementById('confirmPassword');
 form.addEventListener('submit', (event) => {
     if (!validatePhoneNumber(phoneInput.value)) {
         event.preventDefault();
-        alert('Invalid phone number. Phone number should be 10 digits.');
+        alert('Invalid phone number. Phone number should be 10 digits and start with 6 or above.');
     } else if (passwordInput.value !== confirmPasswordInput.value) {
         event.preventDefault();
         alert('Passwords do not match.');
@@ -42,7 +42,7 @@ form.addEventListener('submit', (event) => {
 });
 
 function validatePhoneNumber(phone) {
-    const phonePattern = /^\d{10}$/;
+    const phonePattern = /^[6-9]\d{9}$/; //Added logic phone no. should start with 6 or above to avoid invalid numbers.
     return phonePattern.test(phone);
 }
 
